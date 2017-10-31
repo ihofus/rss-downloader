@@ -4,7 +4,7 @@ var scheduler = require('node-cron');
 var fileHelper = require('./utils/file-helper');
 var linkCache = require('./utils/link-cache');
 
-var configer = require('/usr/config/configer');
+var configer = require('./configer');
 
 configer.feeds.forEach((feed) => subscribeFeed(feed));
 
