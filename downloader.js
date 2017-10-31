@@ -1,4 +1,4 @@
-
+var path = require('path');
 var parser = require('rss-parser');
 var scheduler = require('node-cron');
 var fileHelper = require('./utils/file-helper');
@@ -33,7 +33,9 @@ function handleFeedItem(entry, feed) {
 function matchEntry(matcher, entry) {
   if (matcher.matchItem(entry)) {
     if (!linkCache.downloaded(entry.link)) {
-      var targetFile = matcher.targetFolder + matcher.fileNamer(entry);
+      var root = configer.rootDir || '';
+      var fileName = matcher.fileNamer(entry);
+      var targetFile = matcher.skipRoot ? path.join(matcher.targetFolder, fileName) :  path.join(root, matcher.targetFolder, fileName);
       fileHelper.download(entry.link, targetFile, function () {
         linkCache.put(entry.link);
       })
