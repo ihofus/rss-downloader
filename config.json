@@ -1,0 +1,27 @@
+{
+    "root-dir": "/downloads",
+    "feeds": [
+        {
+            "active": true,
+            "name": "First feed",
+            "rss-url": "http://bla.bla",
+            "cron": "* * * * *",
+            "matchers": [
+                {
+                    "type": "basic",
+                    "params": {
+                        "includes": [
+                            "abc"
+                        ],
+                        "excludes": [
+                            "123"
+                        ]
+                    },
+                    "ignore-root": false,
+                    "target-dir": "/files",
+                    "naming-strategy": "from-link-path"
+                }
+            ]
+        }
+    ]
+}

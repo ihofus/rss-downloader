@@ -6,7 +6,7 @@ module.exports = {
         cache.setKey(link, true);
         cache.save(true);
     },
-    downloaded: function (link) {
+    has: function (link) {
         return cache.getKey(link);
     }
 }
